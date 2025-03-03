@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "security.basic.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'security.basic.enable'"
+  },
+  {
+    "name": "org.springframework.boot.autoconfigure.security",
+    "type": "java.lang.String",
+    "description": "A description for 'org.springframework.boot.autoconfigure.security'"
+  }
+]}
