@@ -118,5 +118,3 @@ public class UserServiceImpl implements UserService {
     }
 
 }
-// userrepository.findAll()
-// userrepository.deleteById()
