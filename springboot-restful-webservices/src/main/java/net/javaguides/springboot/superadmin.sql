@@ -1,5 +1,5 @@
-INSERT INTO roles (role_id, role_name, description)
-SELECT 1, 'ROLE_SERVICE_ADMIN', 'Service account with admin permissions'
+INSERT INTO roles (role_id, role_name, description, displayname)
+SELECT 1, 'ROLE_SERVICE_ADMIN', 'Service account with admin permissions', 'SERVICE ADMIN'
 WHERE NOT EXISTS (SELECT 1 FROM roles WHERE role_name = 'Service_Admin');
  
 INSERT INTO users (user_id, username, email, firstname, lastname, status, version, password)

@@ -177,7 +177,7 @@ public class UserServiceImpl implements UserService {
             
             // Process roles
             List<Roles> roles = new ArrayList<>();
-            String[] roleNames = record.getRoles().split(",");
+            String[] roleNames = record.getRoles().split("\\|");
             
             for (String roleName : roleNames) {
                 roleName = roleName.trim();
@@ -186,7 +186,9 @@ public class UserServiceImpl implements UserService {
                 // Log that the role doesn't exist and is being skipped
                 Roles role=new Roles();
                 role.setRoleName(roleName);
+                String rn=role.getRoleName();
                 role.setDescription("Role Added form CSV");
+                role.setDisplayname(rn.substring(5));
                 rolerepository.save(role);
                 roles.add(role);
             }

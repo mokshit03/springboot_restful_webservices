@@ -30,6 +30,9 @@ public class Roles {
     @ManyToMany(mappedBy = "roles")
     private List<User> users=new ArrayList<>();
 
+    @Column(unique=true)
+    private String displayname;
+
     @Column(nullable = false)
     private String description;
 

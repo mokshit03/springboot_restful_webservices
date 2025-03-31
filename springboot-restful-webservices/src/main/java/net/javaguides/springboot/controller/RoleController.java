@@ -20,7 +20,11 @@ public class RoleController {
 
     @PostMapping("/roles")
     public ResponseEntity<Roles> createRole(@RequestBody Roles role){
-
+        if(role.getDisplayname()==null)
+        {
+            String rn=role.getRoleName();
+            role.setDisplayname(rn.substring(5));
+        }
         Roles savedrole = roleservice.createRole(role);
         return new ResponseEntity<>(savedrole, HttpStatus.CREATED);
     }
