@@ -26,8 +26,6 @@ public class Roles {
     @Column(nullable=false, unique=true)
     private String roleName;
 
-
-    // @JsonBackReference
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private List<User> users=new ArrayList<>();

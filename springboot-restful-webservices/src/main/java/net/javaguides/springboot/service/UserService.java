@@ -1,11 +1,10 @@
 package net.javaguides.springboot.service;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
-
 import net.javaguides.springboot.entity.Roles;
 import net.javaguides.springboot.entity.User;
+import net.javaguides.springboot.entity.UserCsvRepresentation;
 
 public interface UserService 
 {
@@ -22,9 +21,11 @@ Optional<User> getUser(Long id); // GET USER DETAILS
 
 ResponseEntity<String> changePassword(Long id, String oldPassword, String newPassword ); // CHANGE PASSWORD
 
-void updateUserStatus(Long id, String status);
+int updateUserStatus(Long id, String status);
 
-// Integer uploadUsers(MultipartFile file) throws IOException;
+List < User > findAll();
 
-// List<User> parseCsv(MultipartFile file) throws IOException;
+void processUserRecords(List<UserCsvRepresentation> records);
+
+ResponseEntity<String> loginUser(String username, String password);
 }

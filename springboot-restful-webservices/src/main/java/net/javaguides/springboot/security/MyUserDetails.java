@@ -11,19 +11,7 @@ import net.javaguides.springboot.entity.User;
 public class MyUserDetails implements UserDetails {
 
     private User user;
-
-    // @Override
-    // public Collection<? extends GrantedAuthority> getAuthorities() {
-    //     List<Roles> roles = user.getRoles();
-    //     List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-         
-    //     for (Roles role : roles) {
-    //         authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
-    //     }
-         
-    //     return authorities;
-    //     // throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
-    // }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles().stream()

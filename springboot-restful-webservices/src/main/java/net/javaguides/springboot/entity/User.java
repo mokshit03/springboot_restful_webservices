@@ -2,7 +2,7 @@ package net.javaguides.springboot.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name="users")
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User implements Serializable{
+
     @Id
     @Column(name="userId",updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +27,10 @@ public class User implements Serializable {
     private String username;
 
     @Column(nullable = false)
-    // @JsonIgnore
-    private String password; // ASK-> This field got restricted to further work with!
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
     
-    //@JsonManagedReference cascade = CascadeType.ALL, 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_roles",
         joinColumns = @JoinColumn(name = "userId"),
@@ -42,13 +40,16 @@ public class User implements Serializable {
 
     private String status;
 
-    @Version
-    private Integer version;
+    private String email;
 
     @Column(nullable = false)
     private String firstname;
 
     @Column(nullable = false)
     private String lastname;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Version
+    private Long version;
 
 }

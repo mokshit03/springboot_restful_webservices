@@ -28,5 +28,3 @@ public class RoleServiceImpl implements RoleService {
             return rolerepository.findAll();    
         } 
 }
-// userrepository.findAll()
-// userrepository.deleteById()

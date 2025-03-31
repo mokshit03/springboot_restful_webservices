@@ -8,5 +8,3 @@ Roles createRole(Roles userName); //CREATE NEW ROLES
 
 List<Roles> getAllRoles(); //GET ALL THE APPLICATION ROLES
 }
-
-// Roles findById(String roleName);

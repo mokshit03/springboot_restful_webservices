@@ -4,13 +4,24 @@ import net.javaguides.springboot.entity.ModifyNewRole;
 import net.javaguides.springboot.entity.Pass;
 import net.javaguides.springboot.entity.Roles;
 import net.javaguides.springboot.entity.User;
+import net.javaguides.springboot.entity.UserCsvRepresentation;
+import net.javaguides.springboot.repository.UserRepository;
 import net.javaguides.springboot.service.UserService;
+import net.javaguides.springboot.service.impl.CsvParserService;
+
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/Myapp/api/v1")
 @AllArgsConstructor
@@ -18,12 +29,27 @@ public class UserController {
 
     @Autowired
     private UserService userservice;
+    @Autowired
+    private CsvParserService csvParserService;
+
+    @Autowired
+    private UserRepository userrepository;
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        ResponseEntity<String> response = userservice.loginUser(user.getUsername(), user.getPassword());
+        return response;
+    }
 
     @PostMapping("/users")
     public ResponseEntity<String> createUser(@RequestBody User user){
         if(user.getStatus()==null)
         {
             user.setStatus("active");
+        }
+        if(user.getPassword()==null)
+        {
+            user.setPassword("welcome@123");
         }
         User saveduser = userservice.createUser(user);
         return ResponseEntity.ok("Hello -"+saveduser.getUsername()+"!"+"Welcome to Deloitte.");
@@ -41,7 +67,7 @@ public class UserController {
         return userservice.getUserRoles(userId);
     }
 
-    @PostMapping("/admin/{userId}/roles")
+    @PostMapping("/users/{userId}/roles")
     public String modifyUserRole(@PathVariable long userId, @RequestBody ModifyNewRole newroles) {
         
         return userservice.modifyUserRole(userId, newroles.getRoleName(), newroles.getAction());
@@ -55,14 +81,31 @@ public class UserController {
 
     @PatchMapping("/users/{userId}/enable")
     public String enableUser(@PathVariable Long userId) {
+        if(userrepository.findById(userId).isEmpty())
+        {
+            return "SORRY! NO SUCH USER EXISTS, Check the USERID!";
+        }
+        else{
     userservice.updateUserStatus(userId, "active");
     return "User enabled successfully!";
+        }
+
 }
  
     @PatchMapping("/users/{userId}/disable")
     public String disableUser(@PathVariable Long userId) {
-    userservice.updateUserStatus(userId, "Inactive");
-    return "User disabled successfully!";
+    int i=userservice.updateUserStatus(userId, "Inactive");
+    if(i==1)
+    {
+        return "SORRY! SUPER_ADMIN CAN NOT BE DISABLED!!";
+    }
+    if(userrepository.findById(userId).isEmpty())
+    {
+        return "SORRY! NO SUCH USER EXISTS, Check the USERID!";
+    }
+    else{
+        return "User disabled successfully!";
+    }
 }
     
     @PatchMapping("/users/{userId}/password")
@@ -71,21 +114,28 @@ public class UserController {
             return response;
     }
 
-        // @PostMapping(value = "/upload", consumes = {"multipart/form-data"})
-    // public ResponseEntity<Integer> uploadUsers(
-    //         @RequestPart("file")MultipartFile file
-    //         ) throws IOException {
-    //     return ResponseEntity.ok(userservice.uploadUsers(file));
-    // }
-    // @GetMapping("/error")
-    //     public String handleError(HttpServletRequest request, Model model) {
-    //         Object status = request.getAttribute("javax.servlet.error.status_code");
-    //         if (status != null) {
-    //             int statusCode = Integer.parseInt(status.toString());
-    //             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-    //                 return "404";
-    //             }
-    //         }
-    //                     return "error";
-    // }
+      @PostMapping(value = "/admin/users/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadCsvFile(@RequestParam("file") MultipartFile file) {
+        try {
+            if (file.isEmpty()) {
+                return ResponseEntity.badRequest().body("Please upload a file");
+            }
+            
+            String filename = Objects.requireNonNull(file.getOriginalFilename());
+            if (!filename.toLowerCase().endsWith(".csv")) {
+                return ResponseEntity.badRequest().body("Only CSV files are allowed");
+            }
+            
+            List<UserCsvRepresentation> records = csvParserService.parseCsvFile(file);
+            userservice.processUserRecords(records);
+            
+            return ResponseEntity.ok("File processed successfully: " + records.size() + " records imported");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Failed to read file: " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Failed to process file: " + e.getMessage());
+        }
+    }
 }

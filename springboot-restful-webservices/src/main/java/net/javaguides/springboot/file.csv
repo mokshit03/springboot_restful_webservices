@@ -1,0 +1,4 @@
+username,firstname,lastname,status,email,roles
+admin,Mokshit,Bhandari,active,mok@gmail.com, "ROLE_ADMIN"
+user,Naman, Jain,Inactive,nam@gmail.com,"ROLE_USER"
+userm,Paridhi,Goyal,active,pam@gmail.com,"ROLE_USER, ROLE_USER_MANAGER"

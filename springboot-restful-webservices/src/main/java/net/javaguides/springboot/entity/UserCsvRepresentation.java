@@ -1,40 +1,33 @@
-// package net.javaguides.springboot.entity;
+package net.javaguides.springboot.entity;
 
-// import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByName;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-// import jakarta.persistence.Version;
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Getter;
-// import lombok.NoArgsConstructor;
-// import lombok.Setter;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserCsvRepresentation {
 
-// @Getter
-// @Setter
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
-// public class UserCsvRepresentation {
+    @CsvBindByName(column = "username")
+    private String username;
 
-//     @Version
-//     private Integer version;
+    @CsvBindByName(column = "firstname")
+    private String firstname;
 
-//     @CsvBindByName(column = "user_id")
-//     private Long user_id;
+    @CsvBindByName(column = "lastname")
+    private String lastname;
 
-//     @CsvBindByName(column = "username")
-//     private String username;
+    @CsvBindByName(column = "status")
+    private String status;
 
-//     @CsvBindByName(column = "firstname")
-//     private String firstname;
+    @CsvBindByName(column = "email")
+    private String email;
 
-//     @CsvBindByName(column = "lastname")
-//     private String lastname;
+    @CsvBindByName(column = "roles")
+    private String roles;
 
-//     @CsvBindByName(column = "status")
-//     private String status;
-
-//     @CsvBindByName(column = "password")
-//     private String password;
-
-// }
+}

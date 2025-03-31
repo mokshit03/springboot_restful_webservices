@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import net.javaguides.springboot.service.PasswordUpdateService;
 
-// @SpringBootApplication
 @SpringBootApplication(scanBasePackages = "net.javaguides.springboot")
 @EnableTransactionManagement
 public class SpringbootRestfulWebservicesApplication implements CommandLineRunner {

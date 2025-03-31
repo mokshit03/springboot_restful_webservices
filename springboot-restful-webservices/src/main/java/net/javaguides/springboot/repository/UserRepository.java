@@ -10,10 +10,11 @@ import net.javaguides.springboot.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    //@Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
+
     Optional<User> findById(long id);
 
     @Query("SELECT u FROM User u WHERE u.username = :username")
     public User getUserByUsername(@Param("username") String username);
 
+    Optional<User> findUserByUsername(String username);
 }
