@@ -15,7 +15,7 @@ Unzip the file in your local.
 You will find: [application.properties, TargetApp.Jar, csv, sql, README & HELP.md files]
 Open the command prompt from the unzip folder path.
 run this comand to get started with the application-
-### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
+#### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
 Go to http://localhost:8080/login
 
 ## 3. Usage
