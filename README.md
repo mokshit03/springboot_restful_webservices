@@ -26,13 +26,13 @@ Open the command prompt in the project folder by selecting the path, typing cmd,
 Access the application as a service admin.
 
 ## 4. Features
-User Management: Create, update, and manage users.
-Role Management: Create new roles and assign/remove them to/from users.
-Role-Based Access Requests: Facilitate role-based access requests for users.
-User Enable/Disable: Enable or disable user accounts.
-Profile Management: View and manage user profiles.
-Self-Service Capabilities: Allow users to reset passwords.
-Oauth2.0: Supports Oauth 2.0 for authentication.
+##### User Management: Create, update, and manage users.
+##### Role Management: Create new roles and assign/remove them to/from users.
+##### Role-Based Access Requests: Facilitate role-based access requests for users.
+##### User Enable/Disable: Enable or disable user accounts.
+##### Profile Management: View and manage user profiles.
+##### Self-Service Capabilities: Allow users to reset passwords.
+##### Oauth2.0: Supports Oauth 2.0 for authentication.
 
 ### 5. Conclusion
 This web application provides a robust platform for managing user access and roles, integrated seamlessly with SailPoint for efficient provisioning and deprovisioning processes. With its comprehensive feature set, it ensures streamlined and secure user management.
