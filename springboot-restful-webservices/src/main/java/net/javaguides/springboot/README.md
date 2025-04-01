@@ -11,18 +11,19 @@ Java: The project requires Java version 17.0.12.
 MySQL: Install the Mysql version 8.0.35.
 
 ## Steps -
-Clone the repository to your local machine.
-Open the project folder in Visual Studio Code.
-The project contains a pom.xml file which will automatically include all the necessary dependencies.
+Unzip the file in your local.
+You will find: [application.properties, TargetApp.Jar, csv, sql, README & HELP.md files]
+Open the command prompt from the unzip folder path.
+run this comand to get started with the application-
+# COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
+Go to http://localhost:8080/login
 
 #### Usage
-Open the web application in Visual Studio Code.
-Run the application.
+Now the application is up and running.
 Navigate to the project folder path.
-Open a command prompt in the project folder by selecting the path, typing cmd, and pressing Enter.
-Run the following command to create a super admin in the application:
+Open the command prompt in the project folder by selecting the path, typing cmd, and pressing Enter - Run the following command to create a super admin in the application:
 # COMMAND: "mysql -u root -p user_management < superadmin.sql"
-Access the application as a super admin.
+Access the application as a service admin.
 
 #### Features
 User Management: Create, update, and manage users.
