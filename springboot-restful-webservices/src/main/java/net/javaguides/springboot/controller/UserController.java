@@ -36,8 +36,8 @@ public class UserController {
     private UserRepository userrepository;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        ResponseEntity<String> response = userservice.loginUser(user.getUsername(), user.getPassword());
+    public ResponseEntity<User> login(@RequestBody User user) {
+        ResponseEntity<User> response = userservice.loginUser(user.getUsername(), user.getPassword());
         return response;
     }
 

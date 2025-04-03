@@ -29,14 +29,15 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public ResponseEntity<String> loginUser(String username, String password) {
+    public ResponseEntity<User> loginUser(String username, String password) {
         User user = userrepository.findUserByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         if (!passwordEncoder.matches(password, user.getPassword()) || password=="") {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("password is incorrect");
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
         else {
-           return ResponseEntity.status(HttpStatus.OK).body("Login Successful");
+           return ResponseEntity.ok(user);
         }
     }
 

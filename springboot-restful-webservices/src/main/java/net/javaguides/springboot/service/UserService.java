@@ -27,5 +27,5 @@ List < User > findAll();
 
 void processUserRecords(List<UserCsvRepresentation> records);
 
-ResponseEntity<String> loginUser(String username, String password);
+ResponseEntity<User> loginUser(String username, String password);
 }
