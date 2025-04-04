@@ -51,9 +51,22 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User createUser(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
+        if(user.getRoles().isEmpty()){
+            Roles role = rolerepository.findByRoleName("ROLE_USER")
+            .orElseGet(() -> {
+            Roles newRole = new Roles();
+            newRole.setRoleName("ROLE_USER");
+            newRole.setDescription("Default role for users");
+            newRole.setDisplayname("USER");
+            return rolerepository.save(newRole);
+        });
+        List<Roles> roles = new ArrayList<>();
+        roles.add(role);
+        user.setRoles(roles);
         user.setPassword(encodedPassword);
-        return userrepository.save(user);
     }
+    return userrepository.save(user);
+}
 
     @Override
     @Transactional

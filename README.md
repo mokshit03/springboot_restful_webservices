@@ -11,12 +11,12 @@ Java: The project requires Java version 17.0.12.
 MySQL: Install the Mysql version 8.0.35.
 
 ### Steps -
-Unzip the file in your local.
 You will find: [application.properties, TargetApp.Jar, csv, sql, README & HELP.md files]
-Open the command prompt from the unzip folder path.
+Keep all of the above mentioned files in a single folder
+Open the command prompt from the folder path.
 run this comand to get started with the application-
 #### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
-Go to http://localhost:8080/login
+Use Postman collection to access the back-end.
 
 ## 3. Usage
 Now the application is up and running.
