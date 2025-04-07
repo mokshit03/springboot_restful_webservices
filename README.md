@@ -14,14 +14,14 @@ MySQL: Install the Mysql version 8.0.35 or above.
 
 #### 2.1.2 Installations Using Linux Commands:
 - Update your system:
-##### COMMAND: sudo apt update
-##### COMMAND: sudo apt upgrade
+- - ##### COMMAND: sudo apt update
+- - ##### COMMAND: sudo apt upgrade
 
 - Install Java using Linux commands:
-##### COMMAND: sudo apt install default-jdk
+- - ##### COMMAND: sudo apt install default-jdk
 
 - Install MySQL using Linux commands:
-##### COMMAND: sudo apt install mysql-server
+- - ##### COMMAND: sudo apt install mysql-server
 
 ##### 2.1.3 Verifying Installations & Resloving Installation Errors:
 - Java Installation Verification:
@@ -36,9 +36,9 @@ MySQL: Install the Mysql version 8.0.35 or above.
 1. UNZIP THE FILE -
 Unzip the file (TargetApplication.zip) in your local system by running the below commands:
 - Install unzip (if not already installed):
-##### COMMAND: sudo apt install unzip
+- - ##### COMMAND: sudo apt install unzip
 - Unzip the file:
-##### COMMAND: unzip filename.zip
+- - ##### COMMAND: unzip filename.zip
 
 1. KEEP ALL THE FILES IN ONE FOLDER -
 - You will find: (application.properties, TargetApp.Jar, file.csv, superadmin.sql, README.md & HELP.md files) Keep all of the above mentioned files in a single folder
