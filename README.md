@@ -14,31 +14,31 @@ MySQL: Install the Mysql version 8.0.35 or above.
 
 #### 2.1.2 Installations Using Linux Commands:
 - Update your system:
-- - ##### COMMAND: sudo apt update
-- - ##### COMMAND: sudo apt upgrade
+    - ##### COMMAND: sudo apt update
+    - ##### COMMAND: sudo apt upgrade
 
 - Install Java using Linux commands:
-- - ##### COMMAND: sudo apt install default-jdk
+    - ##### COMMAND: sudo apt install default-jdk
 
 - Install MySQL using Linux commands:
-- - ##### COMMAND: sudo apt install mysql-server
+    - ##### COMMAND: sudo apt install mysql-server
 
 ##### 2.1.3 Verifying Installations & Resloving Installation Errors:
 - Java Installation Verification:
-- - Verification : 'java --version' [Returns instaled vesrion - Check Java version is above 17.0.12] 
-- - - If Facing Error: Make sure to Set Java on environment variable path.
+    - Verification : 'java --version' [Returns instaled vesrion - Check Java version is above 17.0.12] 
+        - If Facing Error: Make sure to Set Java on environment variable path.
 
 - MySQL Installation Verification:
-- - Verification : 'mysql --version' [Returns instaled vesrion - Check MySQL version is above 8.0.35]
+    - Verification : 'mysql --version' [Returns instaled vesrion - Check MySQL version is above 8.0.35]
 
 ### 2.2 Set-Up Steps -
 
 1. UNZIP THE FILE -
 Unzip the file (TargetApplication.zip) in your local system by running the below commands:
 - Install unzip (if not already installed):
-- - ##### COMMAND: sudo apt install unzip
+    - ##### COMMAND: sudo apt install unzip
 - Unzip the file:
-- - ##### COMMAND: unzip filename.zip
+    - ##### COMMAND: unzip filename.zip
 
 1. KEEP ALL THE FILES IN ONE FOLDER -
 - You will find: (application.properties, TargetApp.Jar, file.csv, superadmin.sql, README.md & HELP.md files) Keep all of the above mentioned files in a single folder
@@ -51,11 +51,11 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 
 3. RUN THE BACK-END APPLICATION -
 - Open the command prompt from the folder path and run this command to get started with the application -
-##### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
+    - ##### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
 
 - In case of errors try running the below commands:
-##### COMMAND: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin@123';
-##### COMMAND: flush privileges;
+    - ##### COMMAND: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin@123';
+    - ##### COMMAND: flush privileges;
 
 4. SET-UP SERVICE ACCOUNT
 - Now the application is up and running, let's set-up a service account to access the application!
