@@ -85,14 +85,14 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 - Note: ake sure to check the PORT 8080 and change as configured in above steps!
 
 ## 4. FEATURES
-##### Authentication: Supports Basic authentication (Make Sure While SailPoint Integration).
-##### Authorization: Facilitates Role Based access control
-##### User Management: Handles Complete User-management-lifecycle (Create, update and manage users).
-##### Role Management: Create new roles and assign/remove them to/from users.
-##### Role-Based Access Requests: Authorizes requests for different types of user's permissions.
-##### User Import: Import records via CSV file & maintain complete Joiner-Mover-Leaver (JML) Flow.
-##### Profile Management: Users can View other user's profile and can manage their profiles.
-##### Self-Service Capabilities: Users can reset their passwords.
+- Authentication: Supports Basic authentication (Make Sure While SailPoint Integration).
+- Authorization: Facilitates Role Based access control
+- User Management: Handles Complete User-management-lifecycle (Create, update and manage users).
+- Role Management: Create new roles and assign/remove them to/from users.
+- Role-Based Access Requests: Authorizes requests for different types of user's permissions.
+- User Import: Import records via CSV file & maintain complete Joiner-Mover-Leaver (JML) Flow.
+- Profile Management: Users can View other user's profile and can manage their profiles.
+- Self-Service Capabilities: Users can reset their passwords.
 
 ### 5. CONCLUSION
 This web application provides a robust platform for managing user access and roles, integrated seamlessly with SailPoint for efficient provisioning and deprovisioning processes. With its comprehensive feature set, it ensures streamlined and secure user management.
