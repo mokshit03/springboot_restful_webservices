@@ -64,14 +64,14 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 #### COMMAND: "mysql -u root -p user_management < superadmin.sql"
 
 ## 3. USAGE:
-- It's Simple:  You are all set to access all our APIs form POSTMAN! 
-- SOME USAGE NOTES -
-1. Default password for every new user will be   - "welcome@123".
-2. You can not disable/delete/remove anything of - "superadmin".
-3. Every user created will automatically get the "USER" Role.
-4. The application have "ADMIN", "USER", "USER_MANAGER" & "ADMIN" Roles only.
-5. The SERVICE_ADMIN Role must be only used for Connecting with Sailpoint.
-5. ROLE_SERVICE_ADMIN must not be assigned to any new normal users if not needed.
+1. It's Simple:  You are all set to access all our APIs form POSTMAN! 
+2. SOME USAGE NOTES -
+- Default password for every new user will be   - "welcome@123".
+- You can not disable/delete/remove anything of - "superadmin".
+- Every user created will automatically get the "USER" Role.
+- The application have "ADMIN", "USER", "USER_MANAGER" & "ADMIN" Roles only.
+- The SERVICE_ADMIN Role must be only used for Connecting with Sailpoint.
+- ROLE_SERVICE_ADMIN must not be assigned to any new normal users if not needed.
 
 ## 4. APPLICATION'S IMPORTANT APIs
 - This Application lists 13 APIs, major APIs are listed below for quick use:
