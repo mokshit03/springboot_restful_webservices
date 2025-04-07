@@ -14,16 +14,16 @@ MySQL: Install the Mysql version 8.0.35 or above.
 
 #### 2.1.2 Installations Using Linux Commands:
 - Update your system:
-#### COMMAND: sudo apt update
-#### COMMAND: sudo apt upgrade
+##### COMMAND: sudo apt update
+##### COMMAND: sudo apt upgrade
 
 - Install Java using Linux commands:
-#### COMMAND: sudo apt install default-jdk
+##### COMMAND: sudo apt install default-jdk
 
 - Install MySQL using Linux commands:
-#### COMMAND: sudo apt install mysql-server
+##### COMMAND: sudo apt install mysql-server
 
-#### 2.1.3 Verifying Installations & Resloving Installation Errors:
+##### 2.1.3 Verifying Installations & Resloving Installation Errors:
 - Java Installation Verification:
 - - Verification : 'java --version' [Returns instaled vesrion - Check Java version is above 17.0.12] 
 - - - If Facing Error: Make sure to Set Java on environment variable path.
@@ -31,18 +31,17 @@ MySQL: Install the Mysql version 8.0.35 or above.
 - MySQL Installation Verification:
 - - Verification : 'mysql --version' [Returns instaled vesrion - Check MySQL version is above 8.0.35]
 
-### 2.2 Set-up Steps -
+### 2.2 Set-Up Steps -
 
 1. UNZIP THE FILE -
 Unzip the file (TargetApplication.zip) in your local system by running the below commands:
 - Install unzip (if not already installed):
-#### COMMAND: sudo apt install unzip
+##### COMMAND: sudo apt install unzip
 - Unzip the file:
-#### COMMAND: unzip filename.zip
+##### COMMAND: unzip filename.zip
 
 1. KEEP ALL THE FILES IN ONE FOLDER -
-You will find: (application.properties, TargetApp.Jar, file.csv, superadmin.sql, README.md & HELP.md files)
-Keep all of the above mentioned files in a single folder
+- You will find: (application.properties, TargetApp.Jar, file.csv, superadmin.sql, README.md & HELP.md files) Keep all of the above mentioned files in a single folder
 
 2. MODIFY 'application.properties' file -
 - [spring.datasource.username] = {replace_with_your_username}
@@ -52,28 +51,42 @@ Keep all of the above mentioned files in a single folder
 
 3. RUN THE BACK-END APPLICATION -
 - Open the command prompt from the folder path and run this command to get started with the application -
-#### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
+##### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
 
 - In case of errors try running the below commands:
-#### COMMAND: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin@123';
-#### COMMAND: flush privileges;
+##### COMMAND: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin@123';
+##### COMMAND: flush privileges;
 
-## 3. Usage
-Now the application is up and running.
-Navigate to the project folder path.
-Open the command prompt in the project folder by selecting the path, typing [cmd], and pressing Enter - Run the following command to create a super admin in the application:
+4. SET-UP SERVICE ACCOUNT
+- Now the application is up and running, let's set-up a service account to access the application!
+- Navigate to the project folder path. Open the command prompt in the project folder by selecting the path, typing [cmd], and pressing Enter. 
+- Run the following command to create a super admin in the application:
 #### COMMAND: "mysql -u root -p user_management < superadmin.sql"
-You are all set to access all our APIs form POSTMAN!
-Access the application as a service admin
 
-## 4. Features
-##### User Management: Create, update, and manage users.
+## 3. USAGE:
+- It's Simple! 
+- - You are all set to access all our APIs form POSTMAN! 
+- - Access the application as a service admin
+
+## 4. APPLICATION'S IMPORTANT APIs
+- This Application lists 13 APIs, major APIs are listed below for quick use:
+- Login: http://localhost:8080/Myapp/api/v1/login
+- Create User: http://localhost:8080/Myapp/api/v1/users
+- Assign/Reomve Role: http://localhost:8080/Myapp/api/v1/users/{user_id}/roles
+- Enable User: http://localhost:8080/Myapp/api/v1/users/{user_id}/enable
+- Disable User: http://localhost:8080/Myapp/api/v1/users/{user_id}/disable
+- Import Users (CSV): http://localhost:8080/Myapp/api/v1/admin/users/import
+- Change Password: http://localhost:8080/Myapp/api/v1/users/{user_id}/password
+
+## 4. FEATURES
+##### Authentication: Supports Basic authentication (Make Sure While SailPoint Integration).
+##### Authorization: Facilitates Role Based access control
+##### User Management: Handles Complete User-management-lifecycle (Create, update and manage users).
 ##### Role Management: Create new roles and assign/remove them to/from users.
-##### Role-Based Access Requests: Facilitate role-based access requests for users.
-##### User Enable/Disable: Enable or disable user accounts.
-##### Profile Management: View and manage user profiles.
-##### Self-Service Capabilities: Allow users to reset passwords.
-##### Oauth2.0: Supports Oauth 2.0 for authentication.
+##### Role-Based Access Requests: Authorizes requests for different types of user's permissions.
+##### User Import: Import records via CSV file & maintain complete Joiner-Mover-Leaver (JML) Flow.
+##### Profile Management: Users can View other user's profile and can manage their profiles.
+##### Self-Service Capabilities: Users can reset their passwords.
 
-### 5. Conclusion
+### 5. CONCLUSION
 This web application provides a robust platform for managing user access and roles, integrated seamlessly with SailPoint for efficient provisioning and deprovisioning processes. With its comprehensive feature set, it ensures streamlined and secure user management.
