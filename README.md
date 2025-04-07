@@ -82,6 +82,7 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 - Disable User: http://localhost:8080/Myapp/api/v1/users/{user_id}/disable
 - Import Users (CSV): http://localhost:8080/Myapp/api/v1/admin/users/import
 - Change Password: http://localhost:8080/Myapp/api/v1/users/{user_id}/password
+- Note: ake sure to check the PORT 8080 and change as configured in above steps!
 
 ## 4. FEATURES
 ##### Authentication: Supports Basic authentication (Make Sure While SailPoint Integration).
