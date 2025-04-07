@@ -23,7 +23,7 @@ MySQL: Install the Mysql version 8.0.35 or above.
 - Install MySQL using Linux commands:
     - ##### COMMAND: sudo apt install mysql-server
 
-##### 2.1.3 Verifying Installations & Resloving Installation Errors:
+#### 2.1.3 Verifying Installations & Resloving Installation Errors:
 - Java Installation Verification:
     - Verification : 'java --version' [Returns instaled vesrion - Check Java version is above 17.0.12] 
         - If Facing Error: Make sure to Set Java on environment variable path.
@@ -61,7 +61,7 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 - Now the application is up and running, let's set-up a service account to access the application!
 - Navigate to the project, right click on the folder & "open in Terminal"
 - Run the following command to create a super admin in the application:
-#### COMMAND: "mysql -u root -p user_management < superadmin.sql"
+##### COMMAND: "mysql -u root -p user_management < superadmin.sql"
 
 ## 3. USAGE:
 1. It's Simple:  You are all set to access all our APIs form POSTMAN! 
@@ -82,7 +82,7 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 - Disable User: http://localhost:8080/Myapp/api/v1/users/{user_id}/disable
 - Import Users (CSV): http://localhost:8080/Myapp/api/v1/admin/users/import
 - Change Password: http://localhost:8080/Myapp/api/v1/users/{user_id}/password
-- Note: ake sure to check the PORT 8080 and change as configured in above steps!
+##### NOTE: Make sure to check the PORT 8080 and change as configured in above steps!
 
 ## 4. FEATURES
 - Authentication: Supports Basic authentication (Make Sure While SailPoint Integration).
