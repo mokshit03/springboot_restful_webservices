@@ -1,7 +1,8 @@
 # Target Web Application for SailPoint Integration
 
 ## 1. PROJECT DESCRIPTION
-This web application serves as a target system for SailPoint integration, facilitating seamless provisioning and deprovisioning processes governed by SailPoint. The application includes features such as role-based access requests and other self-service capabilities like new access requests, password resets, and more.
+This web application serves as a target system not only for SailPoint Integrations but also for various similar tools, facilitating seamless provisioning and deprovisioning processes, enabling efficient provisioning and deprovisioning. It supports basic authentication and RBAC for secure permission management. 
+The application handles the complete user management lifecycle, including creating, updating, and managing users, as well as role management and import records via CSV files and maintain a complete Joiner-Mover-Leaver (JML) flow. Additionally, it offers profile management and self-service capabilities such as password resets, ensuring secure, efficient, and user-friendly operations.
 
 ## 2. INSTALLATIONS
 
