@@ -1,29 +1,70 @@
-# Web Application for SailPoint Integration
+# Target Web Application for SailPoint Integration
 
-## 1. Project Description
+## 1. PROJECT DESCRIPTION
 This web application serves as a target system for SailPoint integration, facilitating seamless provisioning and deprovisioning processes governed by SailPoint. The application includes features such as role-based access requests and other self-service capabilities like new access requests, password resets, and more.
 
-## 2. Installation
+## 2. INSTALLATIONS
 
-### Prerequisites -
+### 2.1 PREREQUISITES
+
+#### 2.1.1 Direct Installations:
 Visual Studio Code: Ensure you have Visual Studio Code installed.
-Java: The project requires Java version 17.0.12.
-MySQL: Install the Mysql version 8.0.35.
+Java: The project requires Java version 17.0.12 or above.
+MySQL: Install the Mysql version 8.0.35 or above.
 
-### Steps -
-You will find: [application.properties, TargetApp.Jar, csv, sql, README & HELP.md files]
+#### 2.1.2 Installations Using Linux Commands:
+- Update your system:
+#### COMMAND: sudo apt update
+#### COMMAND: sudo apt upgrade
+
+- Install Java using Linux commands:
+#### COMMAND: sudo apt install default-jdk
+
+- Install MySQL using Linux commands:
+#### COMMAND: sudo apt install mysql-server
+
+#### 2.1.3 Verifying Installations & Resloving Installation Errors:
+- Java Installation Verification:
+- - Verification : 'java --version' [Returns instaled vesrion - Check Java version is above 17.0.12] 
+- - - If Facing Error: Make sure to Set Java on environment variable path.
+
+- MySQL Installation Verification:
+- - Verification : 'mysql --version' [Returns instaled vesrion - Check MySQL version is above 8.0.35]
+
+### 2.2 Set-up Steps -
+
+1. UNZIP THE FILE -
+Unzip the file (TargetApplication.zip) in your local system by running the below commands:
+- Install unzip (if not already installed):
+#### COMMAND: sudo apt install unzip
+- Unzip the file:
+#### COMMAND: unzip filename.zip
+
+1. KEEP ALL THE FILES IN ONE FOLDER -
+You will find: (application.properties, TargetApp.Jar, file.csv, superadmin.sql, README.md & HELP.md files)
 Keep all of the above mentioned files in a single folder
-Open the command prompt from the folder path.
-run this comand to get started with the application-
+
+2. MODIFY 'application.properties' file -
+- [spring.datasource.username] = {replace_with_your_username}
+- [spring.datasource.password] = {replace_with_your_password}
+- [server.port=8080] : (Make sure the server port is available) (default is 8080)
+- [Unique_DB-schema] : Schema for this Target Web App is: "user_management", make sure it does not conflict with any existing DB schema - If it does [spring.datasource.url=jdbc:mysql://localhost/{change_db_name}]
+
+3. RUN THE BACK-END APPLICATION -
+- Open the command prompt from the folder path and run this command to get started with the application -
 #### COMMAND: "java -jar Targetapp.jar --spring.config.location=./application.properties"
-Use Postman collection to access the back-end.
+
+- In case of errors try running the below commands:
+#### COMMAND: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin@123';
+#### COMMAND: flush privileges;
 
 ## 3. Usage
 Now the application is up and running.
 Navigate to the project folder path.
-Open the command prompt in the project folder by selecting the path, typing cmd, and pressing Enter - Run the following command to create a super admin in the application:
+Open the command prompt in the project folder by selecting the path, typing [cmd], and pressing Enter - Run the following command to create a super admin in the application:
 #### COMMAND: "mysql -u root -p user_management < superadmin.sql"
-Access the application as a service admin.
+You are all set to access all our APIs form POSTMAN!
+Access the application as a service admin
 
 ## 4. Features
 ##### User Management: Create, update, and manage users.
