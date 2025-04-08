@@ -3,8 +3,7 @@
 ## 1. PROJECT DESCRIPTION
 This web application serves as a target system not only for SailPoint Integrations but also for various similar tools, facilitating seamless provisioning and deprovisioning processes, enabling efficient provisioning and deprovisioning. 
 
-It supports basic authentication and RBAC for secure permission management.
-The application handles the complete user management lifecycle, including creating, updating, and managing users, as well as role management and import records via CSV files, Helps maintaining a complete Joiner-Mover-Leaver (JML) flow. Additionally, it offers profile management and self-service capabilities such as password resets, ensuring secure, efficient, and user-friendly operations.
+It supports basic authentication and RBAC for secure permission management. The application handles the complete user management lifecycle, including creating, updating, and managing users, as well as role management and import records via CSV files, Helps maintaining a complete Joiner-Mover-Leaver (JML) flow. Additionally, it offers profile management and self-service capabilities such as password resets, ensuring secure, efficient, and user-friendly operations.
 
 ## 2. INSTALLATIONS
 
@@ -65,15 +64,16 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 - Navigate to the project, right click on the folder & "open in Terminal"
 - Run the following command to create a super admin in the application:
 ##### COMMAND: "mysql -u root -p user_management < superadmin.sql"
+- Access the application with [username:serviceadmin] & [password:c2FkbWlu]
 
 ## 3. USAGE:
 1. It's Simple:  You are all set to access all our APIs form POSTMAN! 
 2. SOME USAGE NOTES -
 - Default password for every new user will be   - "welcome@123".
-- You can not disable/delete/remove anything of - "superadmin".
+- You can not disable/delete/remove anything of - "serviceadmin".
 - Every user created will automatically get the "USER" Role.
 - The application have "ADMIN", "USER", "USER_MANAGER" & "ADMIN" Roles only.
-- The SERVICE_ADMIN Role must be only used for Connecting with Sailpoint.
+- The SERVICE_ADMIN Role should be only used for Connecting with Sailpoint.
 - ROLE_SERVICE_ADMIN must not be assigned to any new normal users if not needed.
 
 ## 4. APPLICATION'S IMPORTANT APIs
