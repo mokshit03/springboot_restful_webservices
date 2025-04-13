@@ -1,6 +1,6 @@
 package net.javaguides.springboot.service;
 import java.util.List;
-import java.util.Optional;
+// import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import net.javaguides.springboot.entity.Roles;
 import net.javaguides.springboot.entity.User;
@@ -17,7 +17,7 @@ List<Roles> getUserRoles(Long id); // ROLES BELONGING TO USER
  
 String modifyUserRole(Long userId, String roleName, String action); // ASSIGN/REMOVE ROLES
 
-Optional<User> getUser(Long id); // GET USER DETAILS
+User getUser(Long id); // GET USER DETAILS
 
 ResponseEntity<String> changePassword(Long id, String oldPassword, String newPassword ); // CHANGE PASSWORD
 

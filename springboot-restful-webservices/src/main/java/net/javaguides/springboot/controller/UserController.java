@@ -12,7 +12,7 @@ import net.javaguides.springboot.service.impl.CsvParserService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+// import java.util.Optional;
 
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +74,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public Optional<User> getUser(@PathVariable Long userId)
+    public User getUser(@PathVariable Long userId)
     {
         return userservice.getUser(userId);
     }

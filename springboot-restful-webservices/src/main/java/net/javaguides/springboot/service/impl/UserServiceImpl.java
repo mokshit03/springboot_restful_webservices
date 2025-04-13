@@ -5,10 +5,12 @@ import net.javaguides.springboot.entity.User;
 import net.javaguides.springboot.entity.UserCsvRepresentation;
 import net.javaguides.springboot.repository.RoleRepository;
 import net.javaguides.springboot.repository.UserRepository;
+import net.javaguides.springboot.service.RedisService;
 import net.javaguides.springboot.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -27,6 +29,9 @@ import java.util.Optional;
 @AllArgsConstructor
 @Transactional
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private RedisService redisservice;
 
     @Override
     public ResponseEntity<User> loginUser(String username, String password) {
@@ -112,9 +117,21 @@ public class UserServiceImpl implements UserService {
         }
 
     @Override
-    public Optional<User> getUser(Long id) {
-        Optional<User> user=userrepository.findById(id);
+    public User getUser(Long id) {
+        User cached_user=redisservice.get("details_of"+id, User.class);
+        if (cached_user != null)
+        {
+            return cached_user;
+        }
+        else{
+        User user=userrepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));;
+        if(user!=null)
+        {
+            redisservice.set("details_of"+id, user, 300L);
+        }
+        
         return user;
+        }
     }
 
     @Override
