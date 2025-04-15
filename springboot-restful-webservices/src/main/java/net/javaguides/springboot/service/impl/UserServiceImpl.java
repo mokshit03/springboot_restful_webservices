@@ -7,7 +7,6 @@ import net.javaguides.springboot.repository.RoleRepository;
 import net.javaguides.springboot.repository.UserRepository;
 import net.javaguides.springboot.service.RedisService;
 import net.javaguides.springboot.service.UserService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import jakarta.transaction.Transactional;
 
@@ -246,6 +248,12 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public List < User > findAll() {
     return userrepository.findAll();
+  }
+
+  @Override
+  public Page<User> PaginatedUsers(Integer page, Integer limit) {
+    Pageable pageable = PageRequest.of(page-1, limit);
+    return userrepository.findAll(pageable);    
   }
 
 }

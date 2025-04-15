@@ -8,11 +8,10 @@ import net.javaguides.springboot.entity.UserCsvRepresentation;
 import net.javaguides.springboot.repository.UserRepository;
 import net.javaguides.springboot.service.UserService;
 import net.javaguides.springboot.service.impl.CsvParserService;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-// import java.util.Optional;
+import org.springframework.data.domain.Page;
 
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +55,11 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userservice.getAllUsers();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<List<User>> getPaginatedUsers(@RequestParam(defaultValue = "1") Integer page, 
+    @RequestParam(defaultValue = "100000000") Integer limit){
+            Page<User> pages=userservice.PaginatedUsers(page, limit);
+            List<User> userslist = pages.getContent();
+            return ResponseEntity.ok(userslist);
     }
     
     @GetMapping("/users/{userId}/roles")
@@ -114,7 +115,7 @@ public class UserController {
             return response;
     }
 
-      @PostMapping(value = "/admin/users/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/admin/users/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadCsvFile(@RequestParam("file") MultipartFile file) {
         try {
             if (file.isEmpty()) {
