@@ -21,7 +21,7 @@ public class User implements Serializable{
     @Id
     @Column(name="userId",updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;  // ASK -> The M-T-M Join table shows userId!
+    private long id; 
     
     @Column(nullable=false , unique=true)
     private String username;

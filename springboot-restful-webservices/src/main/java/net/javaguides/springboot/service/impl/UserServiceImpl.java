@@ -5,24 +5,23 @@ import net.javaguides.springboot.entity.User;
 import net.javaguides.springboot.entity.UserCsvRepresentation;
 import net.javaguides.springboot.repository.RoleRepository;
 import net.javaguides.springboot.repository.UserRepository;
-import net.javaguides.springboot.service.RedisService;
 import net.javaguides.springboot.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import net.javaguides.springboot.service.RedisService;
+// import org.springframework.security.core.Authentication;
+// import org.springframework.security.core.context.SecurityContextHolder;
 
 import jakarta.transaction.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +31,8 @@ import java.util.Optional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private RedisService redisservice;
+    // @Autowired
+    // private RedisService redisservice;
 
     @Override
     public ResponseEntity<User> loginUser(String username, String password) {
@@ -76,12 +75,10 @@ public class UserServiceImpl implements UserService {
 }
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return userrepository.findAll();
     }
 
-    @Transactional
     public List<Roles> getUserRoles(Long id)
     {
         User user=userrepository.findById(id).orElseThrow(()->new RuntimeException("USER OT FOUND"));        
@@ -119,28 +116,28 @@ public class UserServiceImpl implements UserService {
         }
 
     @Override
-    public User getUser(Long id) {
-        User cached_user=redisservice.get("details_of"+id, User.class);
-        if (cached_user != null)
-        {
-            return cached_user;
-        }
-        else{
-        User user=userrepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));;
-        if(user!=null)
-        {
-            redisservice.set("details_of"+id, user, 300L);
-        }
+    public User getUser(String username) {
+        // User cached_user=redisservice.get("details_of"+id, User.class);
+        // if (cached_user != null)
+        // {
+        //     return cached_user;
+        // }
+        // else{
+        User user=userrepository.findUserByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));;
+        // if(user!=null)
+        // {
+        // redisservice.set("details_of"+id, user, 300L);
+        // }
         
         return user;
-        }
+        // }
     }
 
     @Override
     public ResponseEntity<String> changePassword(Long id, String oldPassword, String newPassword) 
     {
-        @SuppressWarnings("unused")
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        // @SuppressWarnings("unused")
+        // Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
  
         User user = userrepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         if(newPassword!="")
@@ -185,7 +182,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void processUserRecords(List<UserCsvRepresentation> records) {
         for (UserCsvRepresentation record : records) {
-            // Check if user exists
             Optional<User> existingUser = userrepository.findUserByUsername(record.getUsername());
             
             User user;

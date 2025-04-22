@@ -3,7 +3,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import net.javaguides.springboot.service.PasswordUpdateService;
 
 @SpringBootApplication(scanBasePackages = "net.javaguides.springboot")
@@ -19,6 +18,7 @@ public class SpringbootRestfulWebservicesApplication implements CommandLineRunne
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestfulWebservicesApplication.class, args);
 	}
+
 	@Override
     public void run(String... args) throws Exception {
         passwordUpdateService.updatePasswords();

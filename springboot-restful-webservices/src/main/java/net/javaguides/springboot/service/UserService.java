@@ -20,7 +20,7 @@ List<Roles> getUserRoles(Long id); // ROLES BELONGING TO USER
  
 String modifyUserRole(Long userId, String roleName, String action); // ASSIGN/REMOVE ROLES
 
-User getUser(Long id); // GET USER DETAILS
+User getUser(String username); // GET USER DETAILS
 
 ResponseEntity<String> changePassword(Long id, String oldPassword, String newPassword ); // CHANGE PASSWORD
 

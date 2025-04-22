@@ -11,10 +11,10 @@ import net.javaguides.springboot.service.impl.CsvParserService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-import org.springframework.data.domain.Page;
 
-import org.springframework.http.MediaType;
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +28,7 @@ public class UserController {
 
     @Autowired
     private UserService userservice;
+    
     @Autowired
     private CsvParserService csvParserService;
 
@@ -74,10 +75,16 @@ public class UserController {
         return userservice.modifyUserRole(userId, newroles.getRoleName(), newroles.getAction());
     }
 
-    @GetMapping("/users/{userId}")
-    public User getUser(@PathVariable Long userId)
+    // @GetMapping("/users/{userId}")
+    // public User getUser(@PathVariable Long userId)
+    // {
+    //     return userservice.getUser(userId);
+    // }
+
+    @GetMapping("/users/{username}")
+    public User getUser(@PathVariable String username)
     {
-        return userservice.getUser(userId);
+        return userservice.getUser(username);
     }
 
     @PatchMapping("/users/{userId}/enable")
@@ -87,10 +94,9 @@ public class UserController {
             return "SORRY! NO SUCH USER EXISTS, Check the USERID!";
         }
         else{
-    userservice.updateUserStatus(userId, "active");
-    return "User enabled successfully!";
+        userservice.updateUserStatus(userId, "active");
+        return "User enabled successfully!";
         }
-
 }
  
     @PatchMapping("/users/{userId}/disable")
