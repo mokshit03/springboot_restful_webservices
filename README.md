@@ -78,13 +78,13 @@ Unzip the file (TargetApplication.zip) in your local system by running the below
 
 ## 4. APPLICATION'S IMPORTANT APIs
 - This Application lists 13 APIs, major APIs are listed below for quick use:
-- Login: http://localhost/Myapp/api/v1/login
-- Create User: http://localhost/Myapp/api/v1/users
-- Assign/Reomve Role: http://localhost/Myapp/api/v1/users/{user_id}/roles
-- Enable User: http://localhost/Myapp/api/v1/users/{user_id}/enable
-- Disable User: http://localhost/Myapp/api/v1/users/{user_id}/disable
-- Import Users (CSV): http://localhost/Myapp/api/v1/admin/users/import
-- Change Password: http://localhost/Myapp/api/v1/users/{user_id}/password
+- Login: http://localhost/api/v1/login
+- Create User: http://localhost/api/v1/users
+- Assign/Reomve Role: http://localhost/api/v1/users/{user_id}/roles
+- Enable User: http://localhost/api/v1/users/{user_id}/enable
+- Disable User: http://localhost/api/v1/users/{user_id}/disable
+- Import Users (CSV): http://localhost/api/v1/admin/users/import
+- Change Password: http://localhost/api/v1/users/{user_id}/password
 ##### NOTE: Make sure to check the PORT 8080 and change as configured in above steps!
 
 ## 4. FEATURES
